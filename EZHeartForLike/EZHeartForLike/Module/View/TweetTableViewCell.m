@@ -10,4 +10,12 @@
 
 @implementation TweetTableViewCell
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self = [[[NSBundle mainBundle] loadNibNamed:@"TweetTableViewCell" owner:nil options:nil] lastObject];
+    }
+    return self;
+}
+
 @end
