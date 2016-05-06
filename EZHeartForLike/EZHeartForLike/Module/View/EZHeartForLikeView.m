@@ -9,7 +9,7 @@
 #import "EZHeartForLikeView.h"
 
 @interface EZHeartForLikeView()
-//显示在特定View上的大桃心
+//显示在特定View上的大桃心 
 @property (strong, nonatomic) UIImageView *BigHeart;
 @end
 

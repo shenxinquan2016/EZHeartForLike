@@ -10,7 +10,7 @@
 
 @interface EZHeartForLikeView : UIView
 
-//需要将自己的UI存放在contentView中。
+//需要将自己的UI存放在contentView中。 
 @property (strong, nonatomic) UIView *contentView;
 //提供小桃心的View供用户自定义其位置、大小的属性。
 @property (strong, nonatomic) UIImageView *smallHeart;
