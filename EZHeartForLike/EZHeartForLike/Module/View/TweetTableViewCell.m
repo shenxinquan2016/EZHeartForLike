@@ -8,14 +8,22 @@
 
 #import "TweetTableViewCell.h"
 
+@interface TweetTableViewCell()
+@property (weak, nonatomic) IBOutlet UIImageView *tweetImageView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@end
+
 @implementation TweetTableViewCell
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self = [[[NSBundle mainBundle] loadNibNamed:@"TweetTableViewCell" owner:nil options:nil] lastObject];
-    }
-    return self;
+- (void)awakeFromNib {
+    self.containerView.layer.cornerRadius = 10;
+    self.containerView.clipsToBounds = YES;
+}
+
+- (void)setTweetImageName:(NSString *)tweetImageName {
+    _tweetImageName = tweetImageName;
+    self.tweetImageView.image = [UIImage imageNamed:self.tweetImageName];
 }
 
 @end

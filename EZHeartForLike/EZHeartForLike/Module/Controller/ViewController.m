@@ -28,13 +28,14 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 4;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetTableViewCell *twTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     if (!twTableViewCell) {
         twTableViewCell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([TweetTableViewCell class]) owner:nil options:nil] lastObject];
     }
+    twTableViewCell.tweetImageName = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
     return twTableViewCell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

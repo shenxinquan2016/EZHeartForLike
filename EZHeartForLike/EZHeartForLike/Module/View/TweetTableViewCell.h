@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TweetTableViewCell : UITableViewCell
-
+@property (copy, nonatomic) NSString *tweetImageName;
 @end

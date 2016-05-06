@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -15,55 +15,76 @@
                 <rect key="frame" x="0.0" y="0.0" width="286" height="284"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="YW0-7Z-ncT">
-                        <rect key="frame" x="22" y="18" width="242" height="168"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="168" id="78p-oN-FpA"/>
-                        </constraints>
-                    </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m44-gQ-1Pn">
-                        <rect key="frame" x="22" y="186" width="243" height="85"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPD-tD-nDe">
+                        <rect key="frame" x="21" y="17" width="242" height="252"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ezfen Cheung" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nS-O2-h20">
-                                <rect key="frame" x="8" y="5" width="95" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="YW0-7Z-ncT">
+                                <rect key="frame" x="0.0" y="0.0" width="242" height="168"/>
+                                <animations/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m44-gQ-1Pn" userLabel="Content">
+                                <rect key="frame" x="0.0" y="167" width="242" height="85"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ezfen Cheung" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nS-O2-h20">
+                                        <rect key="frame" x="8" y="5" width="95" height="21"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="95" id="5SG-zY-I4Z"/>
+                                            <constraint firstAttribute="height" constant="21" id="f6l-4w-MqV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the &quot;Like&quot; button or double click the Image to &quot;Like&quot; this tweet." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTV-UK-via">
+                                        <rect key="frame" x="8" y="26" width="227" height="54"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="B7X-0W-XyU"/>
-                                    <constraint firstAttribute="width" constant="95" id="nIM-Uq-7Ki"/>
+                                    <constraint firstItem="jTV-UK-via" firstAttribute="centerX" secondItem="m44-gQ-1Pn" secondAttribute="centerX" id="0aU-L8-eod"/>
+                                    <constraint firstItem="jTV-UK-via" firstAttribute="leading" secondItem="m44-gQ-1Pn" secondAttribute="leadingMargin" id="2RF-d9-97k"/>
+                                    <constraint firstItem="9nS-O2-h20" firstAttribute="top" secondItem="m44-gQ-1Pn" secondAttribute="top" constant="5" id="Ex0-o2-0LY"/>
+                                    <constraint firstAttribute="bottom" secondItem="jTV-UK-via" secondAttribute="bottom" constant="5" id="V5b-0B-DX9"/>
+                                    <constraint firstItem="jTV-UK-via" firstAttribute="top" secondItem="9nS-O2-h20" secondAttribute="bottom" id="YYt-ap-SJA"/>
+                                    <constraint firstItem="9nS-O2-h20" firstAttribute="leading" secondItem="jTV-UK-via" secondAttribute="leading" id="a1d-Ea-IGF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the &quot;Like&quot; button or double click the Image to &quot;Like&quot; this tweet." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTV-UK-via">
-                                <rect key="frame" x="8" y="26" width="227" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jTV-UK-via" firstAttribute="leading" secondItem="9nS-O2-h20" secondAttribute="leading" id="Ph5-Fz-LlK"/>
-                            <constraint firstAttribute="bottom" secondItem="jTV-UK-via" secondAttribute="bottom" constant="5" id="TAf-jh-A7a"/>
-                            <constraint firstItem="jTV-UK-via" firstAttribute="leading" secondItem="m44-gQ-1Pn" secondAttribute="leadingMargin" id="V5d-sQ-iOV"/>
-                            <constraint firstItem="jTV-UK-via" firstAttribute="trailing" secondItem="m44-gQ-1Pn" secondAttribute="trailingMargin" id="n3b-HR-R29"/>
-                            <constraint firstItem="jTV-UK-via" firstAttribute="top" secondItem="9nS-O2-h20" secondAttribute="bottom" id="uZS-Jn-X7z"/>
-                            <constraint firstItem="9nS-O2-h20" firstAttribute="top" secondItem="m44-gQ-1Pn" secondAttribute="top" constant="5" id="zY7-0e-U7r"/>
+                            <constraint firstItem="YW0-7Z-ncT" firstAttribute="top" secondItem="MPD-tD-nDe" secondAttribute="top" id="5bA-ng-7Az"/>
+                            <constraint firstItem="YW0-7Z-ncT" firstAttribute="leading" secondItem="MPD-tD-nDe" secondAttribute="leading" id="DNT-h9-FTZ"/>
+                            <constraint firstAttribute="bottom" secondItem="YW0-7Z-ncT" secondAttribute="bottom" constant="84" id="QHB-zd-bcj"/>
+                            <constraint firstAttribute="trailing" secondItem="m44-gQ-1Pn" secondAttribute="trailing" id="Sa8-D4-NKi"/>
+                            <constraint firstItem="m44-gQ-1Pn" firstAttribute="top" secondItem="MPD-tD-nDe" secondAttribute="top" constant="167" id="lR8-U1-ZoT"/>
+                            <constraint firstItem="m44-gQ-1Pn" firstAttribute="trailing" secondItem="YW0-7Z-ncT" secondAttribute="trailing" id="pgy-sX-sTO"/>
+                            <constraint firstItem="YW0-7Z-ncT" firstAttribute="leading" secondItem="m44-gQ-1Pn" secondAttribute="leading" id="vER-7V-Pqf"/>
+                            <constraint firstAttribute="bottom" secondItem="m44-gQ-1Pn" secondAttribute="bottom" id="zfL-cr-ljv"/>
                         </constraints>
                     </view>
                 </subviews>
+                <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="m44-gQ-1Pn" firstAttribute="top" secondItem="YW0-7Z-ncT" secondAttribute="bottom" id="AkA-cK-2YT"/>
-                    <constraint firstItem="YW0-7Z-ncT" firstAttribute="leading" secondItem="m44-gQ-1Pn" secondAttribute="leading" id="NIN-oJ-DDb"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="m44-gQ-1Pn" secondAttribute="bottom" constant="5" id="WBE-9G-in9"/>
-                    <constraint firstItem="YW0-7Z-ncT" firstAttribute="centerX" secondItem="m44-gQ-1Pn" secondAttribute="centerX" id="aLG-vv-5ky"/>
-                    <constraint firstItem="m44-gQ-1Pn" firstAttribute="centerX" secondItem="2Ub-Ud-GeP" secondAttribute="centerX" id="izx-rW-NvZ"/>
-                    <constraint firstItem="YW0-7Z-ncT" firstAttribute="leading" secondItem="2Ub-Ud-GeP" secondAttribute="leadingMargin" constant="14" id="nqZ-0b-a2o"/>
-                    <constraint firstItem="YW0-7Z-ncT" firstAttribute="top" secondItem="2Ub-Ud-GeP" secondAttribute="topMargin" constant="10" id="xzD-SB-tbr"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="MPD-tD-nDe" secondAttribute="bottom" constant="7" id="9N3-2t-3Rm"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="MPD-tD-nDe" secondAttribute="trailing" constant="15" id="MBi-Ny-lBI"/>
+                    <constraint firstItem="MPD-tD-nDe" firstAttribute="leading" secondItem="2Ub-Ud-GeP" secondAttribute="leadingMargin" constant="13" id="XyW-X5-LQ3"/>
+                    <constraint firstItem="MPD-tD-nDe" firstAttribute="top" secondItem="2Ub-Ud-GeP" secondAttribute="topMargin" constant="9" id="viK-7l-gok"/>
                 </constraints>
             </tableViewCellContentView>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="containerView" destination="MPD-tD-nDe" id="cM8-qW-Ohk"/>
+                <outlet property="tweetImageView" destination="YW0-7Z-ncT" id="BrM-so-fdv"/>
+            </connections>
             <point key="canvasLocation" x="214" y="378.5"/>
         </tableViewCell>
     </objects>
