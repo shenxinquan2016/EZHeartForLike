@@ -20,7 +20,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="32b-Wn-f0g">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.15887001513448934" green="0.040437035035164673" blue="0.33298871607070712" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.15309269431738318" green="0.024787580064708263" blue="0.37381380890052374" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                         </subviews>
                         <animations/>
@@ -50,9 +50,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
-                        <color key="barTintColor" red="0.15887001510000001" green="0.040437035039999999" blue="0.33298871610000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.87664619959578016" green="0.88739230707209082" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="1" green="1" blue="0.94163754109999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.29611838413429586" green="0.082458830210151546" blue="0.3402118782722513" alpha="1" colorSpace="calibratedRGB"/>
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                         </textAttributes>
                     </navigationBar>

@@ -11,7 +11,7 @@
 @interface TweetTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *tweetImageView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-
+@property (weak, nonatomic) IBOutlet UIImageView *avatorImageView;
 @end
 
 @implementation TweetTableViewCell
@@ -19,6 +19,8 @@
 - (void)awakeFromNib {
     self.containerView.layer.cornerRadius = 10;
     self.containerView.clipsToBounds = YES;
+    self.avatorImageView.layer.cornerRadius = CGRectGetWidth(self.avatorImageView.bounds) / 2.0 + 1;
+    self.avatorImageView.clipsToBounds = YES;
 }
 
 - (void)setTweetImageName:(NSString *)tweetImageName {
