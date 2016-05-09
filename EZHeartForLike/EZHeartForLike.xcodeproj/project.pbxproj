@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C096C9F51CDC448900FB70D4 /* EZHeartForLikeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C096C9F41CDC448900FB70D4 /* EZHeartForLikeView.m */; settings = {ASSET_TAGS = (); }; };
+		C096C9F51CDC448900FB70D4 /* EZHeartForLike.m in Sources */ = {isa = PBXBuildFile; fileRef = C096C9F41CDC448900FB70D4 /* EZHeartForLike.m */; settings = {ASSET_TAGS = (); }; };
 		E1DA55B71CDA4BF40089E571 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DA55A81CDA4BF40089E571 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		E1DA55B81CDA4BF40089E571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1DA55A91CDA4BF40089E571 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		E1DA55B91CDA4BF40089E571 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1DA55AA1CDA4BF40089E571 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -20,8 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C096C9F31CDC448900FB70D4 /* EZHeartForLikeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZHeartForLikeView.h; sourceTree = "<group>"; };
-		C096C9F41CDC448900FB70D4 /* EZHeartForLikeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZHeartForLikeView.m; sourceTree = "<group>"; };
+		C096C9F31CDC448900FB70D4 /* EZHeartForLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZHeartForLike.h; sourceTree = "<group>"; };
+		C096C9F41CDC448900FB70D4 /* EZHeartForLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZHeartForLike.m; sourceTree = "<group>"; };
 		E123B9331CDA2F3000056A70 /* EZHeartForLike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZHeartForLike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1DA55A71CDA4BF40089E571 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E1DA55A81CDA4BF40089E571 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,8 +51,8 @@
 		C096C9F61CDC44B200FB70D4 /* EZHeartForLike */ = {
 			isa = PBXGroup;
 			children = (
-				C096C9F31CDC448900FB70D4 /* EZHeartForLikeView.h */,
-				C096C9F41CDC448900FB70D4 /* EZHeartForLikeView.m */,
+				C096C9F31CDC448900FB70D4 /* EZHeartForLike.h */,
+				C096C9F41CDC448900FB70D4 /* EZHeartForLike.m */,
 			);
 			name = EZHeartForLike;
 			path = Module/View;
@@ -217,7 +217,7 @@
 			files = (
 				E1DA55CB1CDA54150089E571 /* ViewController.m in Sources */,
 				E1DA55BC1CDA4BF40089E571 /* main.m in Sources */,
-				C096C9F51CDC448900FB70D4 /* EZHeartForLikeView.m in Sources */,
+				C096C9F51CDC448900FB70D4 /* EZHeartForLike.m in Sources */,
 				E1DA55B71CDA4BF40089E571 /* AppDelegate.m in Sources */,
 				E1DA55CC1CDA54150089E571 /* TweetTableViewCell.m in Sources */,
 			);
