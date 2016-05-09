@@ -7,6 +7,7 @@
 //
 
 #import "TweetTableViewCell.h"
+#import "EZHeartForLike.h"
 
 @interface TweetTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *tweetImageView;
@@ -21,9 +22,11 @@
     self.containerView.clipsToBounds = YES;
     self.avatorImageView.layer.cornerRadius = CGRectGetWidth(self.avatorImageView.bounds) / 2.0 + 1;
     self.avatorImageView.clipsToBounds = YES;
-    UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
-    doubleTapGesture.numberOfTapsRequired = 2;
-    [self.tweetImageView addGestureRecognizer:doubleTapGesture];
+    CGPoint center = self.avatorImageView.center;
+    center.x = center.x + 200;
+    EZHeartForLike *heart = [[EZHeartForLike alloc] initWithFrame:CGRectMake(0, 0, 32, 32) DisplayBigHeartOnView:self.tweetImageView];
+    heart.center = center;
+    [self.containerView addSubview:heart];
 }
 
 - (void)setTweetImageName:(NSString *)tweetImageName {
@@ -31,9 +34,4 @@
     self.tweetImageView.image = [UIImage imageNamed:self.tweetImageName];
 }
 
-- (void)doubleTap:(UITapGestureRecognizer *)sender{
-    if (sender.state == UIGestureRecognizerStateEnded) {
-        
-    }
-}
 @end
