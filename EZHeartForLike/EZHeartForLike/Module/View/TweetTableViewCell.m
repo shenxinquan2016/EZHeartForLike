@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tweetImageView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatorImageView;
+@property (weak, nonatomic) IBOutlet UIView *messageContainerView;
 @end
 
 @implementation TweetTableViewCell
@@ -26,7 +27,7 @@
     center.x = center.x + 200;
     EZHeartForLike *heart = [[EZHeartForLike alloc] initWithFrame:CGRectMake(0, 0, 32, 32) DisplayBigHeartOnView:self.tweetImageView];
     heart.center = center;
-    [self.containerView addSubview:heart];
+    [self.messageContainerView addSubview:heart];
 }
 
 - (void)setTweetImageName:(NSString *)tweetImageName {
