@@ -60,10 +60,12 @@
         if (self.displayView) {
             // 指定了显示大桃心的View，显示大桃心
             [self displayBigHeartAndMove];
+            self.liked = YES;
         }
     } else {
         // 没有指定显示大桃心的View或者取消like，直接翻转
         [self rollOver];
+        self.liked = NO;
     }
 }
 
@@ -85,17 +87,97 @@
     [self MoveToSmallHeart];
 }
 - (void)MoveToSmallHeart {
-    // 获得共同的SuperView，然后映射两个Heart的坐标。
+    // 获得共同的SuperView
     UIView * mutualSuperView = [self findTheMutualSuperView];
-    // 在SuperView上完成Transform Animation
     
+    // 然后映射两个Heart的坐标。
+    // 首先是小桃心(self)
+    UIView *view1 = self;
+    CGPoint smallHeartPoint = CGPointZero;
+    while (view1 != mutualSuperView) {
+        smallHeartPoint.x += view1.frame.origin.x;
+        smallHeartPoint.y += view1.frame.origin.y;
+        view1 = view1.superview;
+    }
+    // 其次是大桃心(self.BigHeart)
+    UIView *view2 = self.BigHeart;
+    CGPoint bigHeartPoint = CGPointZero;
+    while (view2 != mutualSuperView) {
+        bigHeartPoint.x += view2.frame.origin.x;
+        bigHeartPoint.y += view2.frame.origin.y;
+        view2 = view2.superview;
+    }
+    
+    // 在SuperView上完成Transform Animation
+    self.BigHeart.hidden = YES;
+    CGRect rect = self.BigHeart.frame;
+    rect.origin.x = bigHeartPoint.x;
+    rect.origin.y = bigHeartPoint.y;
+    __block UIView *tempBigHeart = [[UIView alloc] initWithFrame:rect];
+    tempBigHeart.backgroundColor = self.BigHeart.backgroundColor;
+    [mutualSuperView addSubview:tempBigHeart];
+    __weak EZHeartForLike *weakSelf = self;
+    [UIView animateWithDuration:.2 animations:^{
+        CGRect rect = tempBigHeart.frame;
+        if (bigHeartPoint.x < smallHeartPoint.x) rect.origin.x -= 20;
+        else rect.origin.x += 20;
+        if (bigHeartPoint.y < smallHeartPoint.y) rect.origin.y -= 20;
+        else rect.origin.y += 20;
+        rect.size.width *= 1.5;
+        rect.size.height *= 1.5;
+        tempBigHeart.frame = rect;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:.4 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:5.0 options:UIViewAnimationOptionCurveEaseInOut
+        animations:^{
+            CGRect rect = weakSelf.frame;
+            rect.origin.x = smallHeartPoint.x;
+            rect.origin.y = smallHeartPoint.y;
+            tempBigHeart.frame = rect;
+        } completion:^(BOOL finished) {
+            [tempBigHeart removeFromSuperview];
+            tempBigHeart = nil;
+        }];
+    }];
+    self.BigHeart = nil;
 }
 - (UIView *)findTheMutualSuperView {
-    // 找出小桃心和大桃心的共同的SuperView
-    
-    
-    
-    return nil;
+    // 找出小桃心（self）和大桃心（self.BigHeart）的共同的SuperView
+    // 计算self到UIWindow的距离（以中间View的层数为距离计量）
+    UIView *view1 = self;
+    NSInteger smallViewSuperViewCount = 0;
+    while (![view1 isKindOfClass:[UIWindow class]]) {
+        smallViewSuperViewCount ++;
+        view1 = view1.superview;
+    }
+    NSLog(@"%ld", smallViewSuperViewCount);
+    // 计算self.BigHeart到UIWindow的距离（以中间View的层数为距离计量）
+    UIView *view2 = self.BigHeart;
+    NSInteger bigViewSuperViewCount = 0;
+    while (![view2 isKindOfClass:[UIWindow class]]) {
+        bigViewSuperViewCount ++;
+        view2 = view2.superview;
+    }
+    NSLog(@"%ld", bigViewSuperViewCount);
+    // 共同的SuperView之后的View肯定是一致的，因此小桃心和大桃心到UIWindow的距离之间的差
+    // 实在共同的SuperView之前就存在的。所以，判断二者到UIWindow的距离大小，并利用两者之间
+    // 的差距就可以找到共同的SuperView
+    NSInteger mutualViewCount = labs(smallViewSuperViewCount - bigViewSuperViewCount);
+    view1 = self;
+    view2 = self.BigHeart;
+    if (smallViewSuperViewCount > bigViewSuperViewCount) {
+        for (int i = 0; i < mutualViewCount; ++ i) {
+            view1 = view1.superview;
+        }
+    } else {
+        for (int i = 0; i < mutualViewCount; ++ i) {
+            view2 = view2.superview;
+        }
+    }
+    while (view1 != view2) {
+        view1 = view1.superview;
+        view2 = view2.superview;
+    }
+    return view1;
 }
 
 #pragma mark - withoutDisplayView
