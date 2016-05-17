@@ -12,7 +12,6 @@
 // 显示在特定View上的大桃心
 @property (strong, nonatomic) UIView *BigHeart;
 @property (nonatomic, getter=isLiked) BOOL liked;
-
 @end
 
 @implementation EZHeartForLike
@@ -27,13 +26,14 @@
 - (instancetype)initWithFrame:(CGRect)frame DisplayBigHeartOnView:(UIView *)displayView {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithRed:1.000 green:0.038 blue:0.460 alpha:1.000];
+        self.backgroundColor = [UIColor cyanColor];
         // 为小桃心添加单击事件
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTheSmallHeart:)];
         [self addGestureRecognizer:tap];
         // 将DisplayView保存起来，并为DisplayView添加双击事件
         if (displayView) {
             self.displayView = displayView;
+            [self.displayView setUserInteractionEnabled:YES];
             UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
             doubleTap.numberOfTapsRequired = 2;
             [self.displayView addGestureRecognizer:doubleTap];
@@ -72,19 +72,23 @@
 #pragma mark - withDisplayView
 - (void)displayBigHeartAndMove {
     self.BigHeart = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-    self.BigHeart.backgroundColor = [UIColor colorWithRed:1.000 green:0.148 blue:0.440 alpha:1.000];
+    self.BigHeart.backgroundColor = [UIColor colorWithRed:1.000 green:0.000 blue:0.502 alpha:1.000];
     self.BigHeart.center = self.displayView.center;
     [self.displayView addSubview:self.BigHeart];
     // 动态在displayView上展示大桃心
+    CGFloat displayViewWidth = self.displayView.bounds.size.width, displayViewHeight = self.displayView.bounds.size.height;
+    CGFloat scaleMultiples = MIN(displayViewWidth, displayViewHeight) * .6;     // 计算大桃心的最大时的Size
+    __weak EZHeartForLike *weakSelf = self;
     [UIView animateWithDuration:.2 animations:^{
-        CGAffineTransform transform = CGAffineTransformScale(self.BigHeart.transform, 64, 64);
-        self.BigHeart.transform = transform;
+        CGAffineTransform transform = CGAffineTransformScale(weakSelf.BigHeart.transform, scaleMultiples, scaleMultiples);
+        weakSelf.BigHeart.transform = transform;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:.4 animations:^{
-            self.BigHeart.transform = CGAffineTransformScale(self.BigHeart.transform, 0.8, 0.8);
+        [UIView animateWithDuration:.4 delay:0 usingSpringWithDamping:.6 initialSpringVelocity:5.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            weakSelf.BigHeart.transform = CGAffineTransformScale(weakSelf.BigHeart.transform, 0.8, 0.8);
+        } completion:^(BOOL finished) {
+            [weakSelf MoveToSmallHeart];
         }];
     }];
-    [self MoveToSmallHeart];
 }
 - (void)MoveToSmallHeart {
     // 获得共同的SuperView
@@ -117,17 +121,16 @@
     tempBigHeart.backgroundColor = self.BigHeart.backgroundColor;
     [mutualSuperView addSubview:tempBigHeart];
     __weak EZHeartForLike *weakSelf = self;
-    [UIView animateWithDuration:.2 animations:^{
+    [UIView animateWithDuration:.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect rect = tempBigHeart.frame;
-        if (bigHeartPoint.x < smallHeartPoint.x) rect.origin.x -= 20;
-        else rect.origin.x += 20;
-        if (bigHeartPoint.y < smallHeartPoint.y) rect.origin.y -= 20;
-        else rect.origin.y += 20;
-        rect.size.width *= 1.5;
-        rect.size.height *= 1.5;
+        CGFloat offsets = rect.size.width * 0.5;
+        if (bigHeartPoint.x < smallHeartPoint.x) rect.origin.x -= offsets;
+        else rect.origin.x += offsets;
+        if (bigHeartPoint.y < smallHeartPoint.y) rect.origin.y -= offsets;
+        else rect.origin.y += offsets;
         tempBigHeart.frame = rect;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:.4 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:5.0 options:UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:.4 delay:0 usingSpringWithDamping:.4 initialSpringVelocity:18.0 options:UIViewAnimationOptionCurveEaseInOut
         animations:^{
             CGRect rect = weakSelf.frame;
             rect.origin.x = smallHeartPoint.x;
@@ -136,8 +139,10 @@
         } completion:^(BOOL finished) {
             [tempBigHeart removeFromSuperview];
             tempBigHeart = nil;
+            weakSelf.backgroundColor = [UIColor colorWithRed:1.000 green:0.000 blue:0.502 alpha:1.000];
         }];
     }];
+    [self.BigHeart removeFromSuperview];
     self.BigHeart = nil;
 }
 - (UIView *)findTheMutualSuperView {
@@ -149,7 +154,6 @@
         smallViewSuperViewCount ++;
         view1 = view1.superview;
     }
-    NSLog(@"%ld", smallViewSuperViewCount);
     // 计算self.BigHeart到UIWindow的距离（以中间View的层数为距离计量）
     UIView *view2 = self.BigHeart;
     NSInteger bigViewSuperViewCount = 0;
@@ -157,7 +161,6 @@
         bigViewSuperViewCount ++;
         view2 = view2.superview;
     }
-    NSLog(@"%ld", bigViewSuperViewCount);
     // 共同的SuperView之后的View肯定是一致的，因此小桃心和大桃心到UIWindow的距离之间的差
     // 实在共同的SuperView之前就存在的。所以，判断二者到UIWindow的距离大小，并利用两者之间
     // 的差距就可以找到共同的SuperView
@@ -182,6 +185,14 @@
 
 #pragma mark - withoutDisplayView
 - (void)rollOver {
+    __weak EZHeartForLike *weakSelf = self;
+    [UIView animateWithDuration:.5 animations:^{
+        // 当前状态为"Liked"，翻转回"Unlike"
+        weakSelf.backgroundColor = [UIColor cyanColor];
+        weakSelf.transform = CGAffineTransformScale(weakSelf.transform, -1, 1);
+    } completion:^(BOOL finished) {
+        
+    }];
     
 }
 @end
