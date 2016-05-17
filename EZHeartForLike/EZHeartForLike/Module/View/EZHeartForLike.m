@@ -9,9 +9,10 @@
 #import "EZHeartForLike.h"
 
 @interface EZHeartForLike()
-// 显示在特定View上的大桃心
-@property (strong, nonatomic) UIView *BigHeart;
-@property (nonatomic, getter=isLiked) BOOL liked;
+@property (strong, nonatomic) UIImage *likeImage;       // 大小桃心的Image
+@property (strong, nonatomic) UIImage *unlikeImage;     // 小桃心的Image
+@property (strong, nonatomic) UIImageView *BigHeart;    // 显示在特定View上的大桃心
+@property (nonatomic, getter=isLiked) BOOL liked;       // 标识符
 @end
 
 @implementation EZHeartForLike
@@ -26,7 +27,8 @@
 - (instancetype)initWithFrame:(CGRect)frame DisplayBigHeartOnView:(UIView *)displayView {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor cyanColor];
+        self.userInteractionEnabled = YES;
+        self.image = [UIImage imageNamed:@"unlike"];
         // 为小桃心添加单击事件
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTheSmallHeart:)];
         [self addGestureRecognizer:tap];
@@ -42,7 +44,14 @@
     return self;
 }
 
-#pragma mark - UITapGestureRecognizer
+# pragma mark - setImage
+- (void)setLikeImage:(UIImage *)likeImage unLikeImage:(UIImage *)unlikeImage {
+    self.unlikeImage = unlikeImage;
+    self.likeImage = likeImage;
+    self.image = unlikeImage;
+}
+
+# pragma mark - UITapGestureRecognizer
 - (void)tapTheSmallHeart:(UIGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateEnded) {
         [self transferOrRollOver];
@@ -54,7 +63,7 @@
     }
 }
 
-#pragma mark - achieve function
+# pragma mark - achieve function
 - (void)transferOrRollOver {
     if (!self.isLiked) {
         if (self.displayView) {
@@ -69,10 +78,11 @@
     }
 }
 
-#pragma mark - withDisplayView
+# pragma mark - withDisplayView
 - (void)displayBigHeartAndMove {
-    self.BigHeart = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-    self.BigHeart.backgroundColor = [UIColor colorWithRed:1.000 green:0.000 blue:0.502 alpha:1.000];
+    self.BigHeart = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+    self.BigHeart.image = self.likeImage ? self.likeImage : [UIImage imageNamed:@"liked"];
+    self.BigHeart.backgroundColor = [UIColor clearColor];
     self.BigHeart.center = self.displayView.center;
     [self.displayView addSubview:self.BigHeart];
     // 动态在displayView上展示大桃心
@@ -117,8 +127,8 @@
     CGRect rect = self.BigHeart.frame;
     rect.origin.x = bigHeartPoint.x;
     rect.origin.y = bigHeartPoint.y;
-    __block UIView *tempBigHeart = [[UIView alloc] initWithFrame:rect];
-    tempBigHeart.backgroundColor = self.BigHeart.backgroundColor;
+    __block UIImageView *tempBigHeart = [[UIImageView alloc] initWithFrame:rect];
+    tempBigHeart.image = self.likeImage ? self.likeImage : [UIImage imageNamed:@"liked"];
     [mutualSuperView addSubview:tempBigHeart];
     __weak EZHeartForLike *weakSelf = self;
     [UIView animateWithDuration:.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -139,7 +149,7 @@
         } completion:^(BOOL finished) {
             [tempBigHeart removeFromSuperview];
             tempBigHeart = nil;
-            weakSelf.backgroundColor = [UIColor colorWithRed:1.000 green:0.000 blue:0.502 alpha:1.000];
+            weakSelf.image = self.likeImage ? self.likeImage : [UIImage imageNamed:@"liked"];
         }];
     }];
     [self.BigHeart removeFromSuperview];
@@ -188,8 +198,8 @@
     __weak EZHeartForLike *weakSelf = self;
     [UIView animateWithDuration:.5 animations:^{
         // 当前状态为"Liked"，翻转回"Unlike"
-        weakSelf.backgroundColor = [UIColor cyanColor];
         weakSelf.transform = CGAffineTransformScale(weakSelf.transform, -1, 1);
+        weakSelf.image = self.unlikeImage ? self.unlikeImage : [UIImage imageNamed:@"unlike"];
     } completion:^(BOOL finished) {
         
     }];

@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EZHeartForLike : UIView
+@interface EZHeartForLike : UIImageView
 
 // 大桃心显示的用户指定的View
 @property (weak, nonatomic) UIView *displayView;
 
-//对象方法，创建对象
+// 对象方法，创建对象
 - (instancetype)init;
 - (instancetype)initWithFrame:(CGRect)frame;
 - (instancetype)initWithFrame:(CGRect)frame DisplayBigHeartOnView:(UIView *)displayView;
-
+//
+- (void)setLikeImage:(UIImage *)likeImage unLikeImage:(UIImage *)unlikeImage;
 
 @end
