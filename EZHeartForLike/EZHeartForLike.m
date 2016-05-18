@@ -150,6 +150,7 @@
             [tempBigHeart removeFromSuperview];
             tempBigHeart = nil;
             weakSelf.image = self.likeImage ? self.likeImage : [UIImage imageNamed:@"liked"];
+            if ([weakSelf.delegate respondsToSelector:@selector(tapLike)]) [weakSelf.delegate tapLike];
         }];
     }];
     [self.BigHeart removeFromSuperview];
@@ -201,7 +202,7 @@
          weakSelf.transform = CGAffineTransformScale(weakSelf.transform, -1, 1);
         weakSelf.image = self.unlikeImage ? self.unlikeImage : [UIImage imageNamed:@"unlike"];
     } completion:^(BOOL finished) {
-        
+        if ([weakSelf.delegate respondsToSelector:@selector(tapUnlike)]) [weakSelf.delegate tapUnlike];
     }];
     
 }

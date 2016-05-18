@@ -9,7 +9,7 @@
 #import "TweetTableViewCell.h"
 #import "EZHeartForLike.h"
 
-@interface TweetTableViewCell()
+@interface TweetTableViewCell() <EZHeartForLikeDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *tweetImageView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatorImageView;
@@ -28,12 +28,20 @@
     EZHeartForLike *heart = [[EZHeartForLike alloc] initWithFrame:CGRectMake(0, 0, 24, 24) DisplayBigHeartOnView:self.tweetImageView];
     [heart setLikeImage:[UIImage imageNamed:@"liked"] unLikeImage:[UIImage imageNamed:@"unlike"]];
     heart.center = center;
+    heart.delegate = self;
     [self.messageContainerView addSubview:heart];
 }
 
 - (void)setTweetImageName:(NSString *)tweetImageName {
     _tweetImageName = tweetImageName;
     self.tweetImageView.image = [UIImage imageNamed:self.tweetImageName];
+}
+
+- (void)tapUnlike {
+    NSLog(@"unlike");
+}
+- (void)tapLike {
+    NSLog(@"like");
 }
 
 @end
