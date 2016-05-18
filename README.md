@@ -17,29 +17,46 @@
 ### Installation
 
 You can install EZHeartForLike in a traditional way -- drag the **EZHeartForLike folder** into your project. However, it is strongly recommended that you install via CocoaPods.    
-你可以直接在 **EZHeartForLike**文件夹中将EZHeartForLike的.h、.m加入到项目中直接使用
+你可以直接在 **EZHeartForLike**文件夹中将EZHeartForLike的.h、.m和两张桃心图加入到项目中直接使用
 
+### Install with CocoaPods
+
+CocoaPods is a dependency manager for Objective-C and Swift, which automates and simplifies the process of using 3rd-party libraries like EZHeartForLike in your projects.
+
+* Podfile
+
+	```           
+	pod 'EZHeartForLike', '~> 1.0.0'
+	```
+	
 
 ### Usage
-**一行代码完成实现**
+
 #### Create a EZHeartForLike
 
-1. import the "EZHeartForLike.h" to your controller.
+1. Import the "EZHeartForLike.h" to your controller.
     
     ``` 
     #import "EZHeartForLike.h"
     ```
     
-2. init the EZHeartForLike into your controller.
+2. Init the EZHeartForLike into your controller.
 
     ```
     EZHeartForLike *heart = [[EZHeartForLike alloc] initWithFrame:CGRectMake(0, 0, 24, 24) DisplayBigHeartOnView:self.tweetImageView];    
     ```
+   If you want to do something after invoking the EZHeartForLike, set up the delegate.    
+   一般来说，需要在动画执行结束后完成相关操作，设置代理并实现相关方法。
+    
+    ```
+    heart.delegate = self;
+    ```
 创建的EZHeartForLike是右下角的小桃心（见图1）    
 指定的displayView是上图的ImageView，可实现双击（见图2）
 
-3. If you want the EZHeartForLike to show your own image, just set the likeImage and the unlikeImage using follow function:
-
+3. If you want the EZHeartForLike to show your own image, just set the likeImage and the unlikeImage using follow function:     
+如果你想使用自己的图片，就使用此方法设置（非必须）：   
+ 
     ```
     [heart setLikeImage:[UIImage imageNamed:@"liked"] unLikeImage:[UIImage imageNamed:@"unlike"]];
     ```    
@@ -52,6 +69,26 @@ You can install EZHeartForLike in a traditional way -- drag the **EZHeartForLike
     ```
     
 5. enjoy.  :)
+
+#### EZHeartForLikeDelegate
+
+* -(void)tapLike;    
+    You can do something anter the **like** animation done.    
+    
+    ```
+    - (void)tapLike {    
+        ....
+    }
+    ```
+
+* -(void)tapUnlike;    
+	As "tapLike" function, you can do something after the **unlike** animation done;
+    
+    ```
+    - (void)tapImageView:(NSInteger)imageIndex {    
+        ....
+    }
+    ```
 
 ## Issues, Bugs, Suggestions
 
