@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "profile_btn_unlike.png",
+      "filename" : "Oval 1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "profile_btn_unlike@2x.png",
       "scale" : "2x"
     },
     {

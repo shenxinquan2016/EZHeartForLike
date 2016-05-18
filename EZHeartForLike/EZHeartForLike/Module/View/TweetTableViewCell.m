@@ -24,8 +24,8 @@
     self.avatorImageView.layer.cornerRadius = CGRectGetWidth(self.avatorImageView.bounds) / 2.0 + 1;
     self.avatorImageView.clipsToBounds = YES;
     CGPoint center = self.avatorImageView.center;
-    center.x = center.x + 200;
-    EZHeartForLike *heart = [[EZHeartForLike alloc] initWithFrame:CGRectMake(0, 0, 32, 32) DisplayBigHeartOnView:self.tweetImageView];
+    center.x = center.x + 280;
+    EZHeartForLike *heart = [[EZHeartForLike alloc] initWithFrame:CGRectMake(0, 0, 24, 24) DisplayBigHeartOnView:self.tweetImageView];
     heart.center = center;
     [self.messageContainerView addSubview:heart];
 }
