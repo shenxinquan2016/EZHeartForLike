@@ -26,6 +26,7 @@
     CGPoint center = self.avatorImageView.center;
     center.x = center.x + 280;
     EZHeartForLike *heart = [[EZHeartForLike alloc] initWithFrame:CGRectMake(0, 0, 24, 24) DisplayBigHeartOnView:self.tweetImageView];
+    [heart setLikeImage:[UIImage imageNamed:@"liked"] unLikeImage:[UIImage imageNamed:@"unlike"]];
     heart.center = center;
     [self.messageContainerView addSubview:heart];
 }
