@@ -19,7 +19,7 @@
 
 #pragma mark - initial
 - (instancetype)init {
-    return [self initWithFrame:CGRectMake(0, 0, 32, 32)];
+    return [self initWithFrame:CGRectMake(0, 0, 24, 24)];
 }
 - (instancetype)initWithFrame:(CGRect)frame {
     return [self initWithFrame:frame DisplayBigHeartOnView:nil];
@@ -140,7 +140,7 @@
         else rect.origin.y += offsets;
         tempBigHeart.frame = rect;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:.4 delay:0 usingSpringWithDamping:.4 initialSpringVelocity:18.0 options:UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:.4 delay:0 usingSpringWithDamping:.6 initialSpringVelocity:12.0 options:UIViewAnimationOptionCurveEaseInOut
         animations:^{
             CGRect rect = weakSelf.frame;
             rect.origin.x = smallHeartPoint.x;
@@ -196,9 +196,9 @@
 #pragma mark - withoutDisplayView
 - (void)rollOver {
     __weak EZHeartForLike *weakSelf = self;
-    [UIView animateWithDuration:.5 animations:^{
+    [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         // 当前状态为"Liked"，翻转回"Unlike"
-        weakSelf.transform = CGAffineTransformScale(weakSelf.transform, -1, 1);
+         weakSelf.transform = CGAffineTransformScale(weakSelf.transform, -1, 1);
         weakSelf.image = self.unlikeImage ? self.unlikeImage : [UIImage imageNamed:@"unlike"];
     } completion:^(BOOL finished) {
         
