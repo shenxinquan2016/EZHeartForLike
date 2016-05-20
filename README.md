@@ -17,7 +17,7 @@
 ### Installation
 
 You can install EZHeartForLike in a traditional way -- drag the **EZHeartForLike folder** into your project. However, it is strongly recommended that you install via CocoaPods.    
-你可以直接在 **EZHeartForLike**文件夹中将EZHeartForLike的.h、.m和两张桃心图加入到项目中直接使用
+你可以直接在 **EZHeartForLike/EZHeartForLike/Module/View/EZHeartForLike**文件夹中将EZHeartForLike的.h、.m和**EZHeartForLike/EZHeartForLike/Module/Resources**两张桃心图加入到项目中直接使用
 
 ### Install with CocoaPods
 
@@ -85,7 +85,7 @@ CocoaPods is a dependency manager for Objective-C and Swift, which automates and
 	As "tapLike" function, you can do something after the **unlike** animation done;
     
     ```
-    - (void)tapImageView:(NSInteger)imageIndex {    
+    - (void)tapUnlike {    
         ....
     }
     ```
