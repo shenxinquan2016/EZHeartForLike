@@ -5,6 +5,7 @@
 ![](https://img.shields.io/badge/CocoaPods-v0.0.1-green.svg?style=flat)
 ![](https://img.shields.io/badge/platform-iOS-red.svg?style=flat)
 > EZHeartForLike in Objective-C.    
+> EZHeartForLike show the animation between two different view. As you can see in the following Pics, the Heart is generated in the UIImageView, and finally move to the UIView under.   
 > EZHeartForLike 是点赞动画的实现，但是值得注意的是动画的**执行位置**，从下图可以看出，大桃心和小桃心所在的View是不同的View。因此解决动画的跨View实现才是EZHeartForLike的真正目的。    
 > 而且这个动画也是萌萌哒，哈哈哈哈
 
@@ -16,7 +17,7 @@
 
 ### Installation
 
-You can install EZHeartForLike in a traditional way -- drag the **EZHeartForLike folder** into your project. However, it is strongly recommended that you install via CocoaPods.    
+You can install EZHeartForLike in a traditional way -- drag the **EZHeartForLike/EZHeartForLike/Module/View/EZHeartForLike** and **EZHeartForLike/EZHeartForLike/Module/Resources** into your project. However, it is strongly recommended that you install via CocoaPods.    
 你可以直接在 **EZHeartForLike/EZHeartForLike/Module/View/EZHeartForLike**文件夹中将EZHeartForLike的.h、.m和**EZHeartForLike/EZHeartForLike/Module/Resources**两张桃心图加入到项目中直接使用
 
 ### Install with CocoaPods
@@ -54,7 +55,7 @@ CocoaPods is a dependency manager for Objective-C and Swift, which automates and
 创建的EZHeartForLike是右下角的小桃心（见图1）    
 指定的displayView是上图的ImageView，可实现双击（见图2）
 
-3. If you want the EZHeartForLike to show your own image, just set the likeImage and the unlikeImage using follow function:     
+3. If you want the EZHeartForLike to show your own image, just set the likeImage and the unlikeImage using follow function (nonessential):     
 如果你想使用自己的图片，就使用此方法设置（非必须）：   
  
     ```
