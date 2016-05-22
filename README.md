@@ -7,7 +7,7 @@
 > EZHeartForLike in Objective-C.    
 > EZHeartForLike show the animation between two different view. As you can see in the following Pics, the Heart is generated in the UIImageView, and finally move to the UIView under.   
 > EZHeartForLike 是点赞动画的实现，但是值得注意的是动画的**执行位置**，从下图可以看出，大桃心和小桃心所在的View是不同的View。因此解决动画的跨View实现才是EZHeartForLike的真正目的。    
-> 而且这个动画也是萌萌哒，哈哈哈哈
+> 而且这个动画也是萌萌哒，希望你喜欢，哈哈哈哈
 
 ![](single.gif)
 ![](double.gif)
