@@ -25,10 +25,10 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  s.platform     = :ios, "7.0"
 
   #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
+  s.ios.deployment_target = "7.0"
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
@@ -41,7 +41,7 @@ Pod::Spec.new do |s|
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.source_files  = "EZHeartForLike/*.{h,m}"
+  s.source_files  = "EZHeartForLike/EZHeartForLike/Module/View/EZHeartForLike/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
 
@@ -49,7 +49,7 @@ Pod::Spec.new do |s|
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   # s.resource  = "icon.png"
-  s.resources = "EZHeartForLike/*.png"
+  s.resources = "EZHeartForLike/EZHeartForLike/Module/Resources/*.png"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
