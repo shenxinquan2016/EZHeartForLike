@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UIImage *unlikeImage;     // 小桃心的Image
 @property (strong, nonatomic) UIImageView *BigHeart;    // 显示在特定View上的大桃心
 @property (nonatomic, getter=isLiked) BOOL liked;       // 标识符
+@property (nonatomic, getter=canDoNextAnimation) BOOL nextAnimation;
 @end
 
 @implementation EZHeartForLike
@@ -29,6 +30,7 @@
     if (self) {
         self.userInteractionEnabled = YES;
         self.image = [UIImage imageNamed:@"unlike"];
+        self.nextAnimation = YES;
         // 为小桃心添加单击事件
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTheSmallHeart:)];
         [self addGestureRecognizer:tap];
@@ -65,16 +67,22 @@
 
 # pragma mark - achieve function
 - (void)transferOrRollOver {
-    if (!self.isLiked) {
-        if (self.displayView) {
-            // 指定了显示大桃心的View，显示大桃心
-            [self displayBigHeartAndMove];
+    if (self.canDoNextAnimation) {
+        self.nextAnimation = NO;
+        if (!self.isLiked) {
             self.liked = YES;
+            if (self.displayView) {
+                // 指定了显示大桃心的View，显示大桃心
+                [self displayBigHeartAndMove];
+            } else {
+                // 没有指定显示大桃心的View，直接翻转
+                [self rollOver];
+            }
+        } else {
+            // 取消like，直接翻转
+            [self rollOver];
+            self.liked = NO;
         }
-    } else {
-        // 没有指定显示大桃心的View或者取消like，直接翻转
-        [self rollOver];
-        self.liked = NO;
     }
 }
 
@@ -151,6 +159,7 @@
             tempBigHeart = nil;
             weakSelf.image = self.likeImage ? self.likeImage : [UIImage imageNamed:@"liked"];
             if ([weakSelf.delegate respondsToSelector:@selector(tapLike)]) [weakSelf.delegate tapLike];
+            weakSelf.nextAnimation = YES;
         }];
     }];
     [self.BigHeart removeFromSuperview];
@@ -202,8 +211,8 @@
          weakSelf.transform = CGAffineTransformScale(weakSelf.transform, -1, 1);
         weakSelf.image = self.unlikeImage ? self.unlikeImage : [UIImage imageNamed:@"unlike"];
     } completion:^(BOOL finished) {
+        weakSelf.nextAnimation = YES;
         if ([weakSelf.delegate respondsToSelector:@selector(tapUnlike)]) [weakSelf.delegate tapUnlike];
     }];
-    
 }
 @end
