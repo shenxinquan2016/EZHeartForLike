@@ -2,7 +2,7 @@
     
     
 ![](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
-![](https://img.shields.io/badge/CocoaPods-v0.0.1-green.svg?style=flat)
+![](https://img.shields.io/badge/CocoaPods-v1.0.1-green.svg?style=flat)
 ![](https://img.shields.io/badge/platform-iOS-red.svg?style=flat)
 > EZHeartForLike in Objective-C.    
 > EZHeartForLike show the animation between two different view. As you can see in the following Pics, the Heart is generated in the UIImageView, and finally move to the UIView under.   
@@ -18,6 +18,7 @@
 ### Installation
 
 You can install EZHeartForLike in a traditional way -- drag the **EZHeartForLike/EZHeartForLike/Module/View/EZHeartForLike** and **EZHeartForLike/EZHeartForLike/Module/Resources** into your project. However, it is strongly recommended that you install via CocoaPods.    
+    
 你可以直接在 **EZHeartForLike/EZHeartForLike/Module/View/EZHeartForLike**文件夹中将EZHeartForLike的.h、.m和**EZHeartForLike/EZHeartForLike/Module/Resources**两张桃心图加入到项目中直接使用
 
 ### Install with CocoaPods
@@ -27,7 +28,7 @@ CocoaPods is a dependency manager for Objective-C and Swift, which automates and
 * Podfile
 
 	```           
-	pod 'EZHeartForLike', '~> 1.0.0'
+	pod 'EZHeartForLike', '~> 1.0.1'
 	```
 	
 
@@ -90,6 +91,10 @@ CocoaPods is a dependency manager for Objective-C and Swift, which automates and
         ....
     }
     ```
+
+## update
+
+	1.0.1     修复快速点击会卡死的bug。
 
 ## Issues, Bugs, Suggestions
 
